@@ -3,8 +3,27 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 /** Single in-flight applySession — stops TOKEN_REFRESHED / multi-tab from stacking /auth/me calls. */
-let applySessionInFlight = null
 let isProcessingLogout = false
+
+/** Use a global symbol to ensure shared state across all chunks/bundles */
+const FLIGHT_KEY = typeof globalThis !== 'undefined' 
+  ? (globalThis.__authApplySessionFlight ??= Symbol.for('authApplySessionFlight'))
+  : Symbol.for('authApplySessionFlight')
+
+const getFlightState = () => {
+  if (typeof globalThis !== 'undefined') {
+    if (!globalThis[FLIGHT_KEY]) globalThis[FLIGHT_KEY] = { promise: null }
+    return globalThis[FLIGHT_KEY]
+  }
+  return { promise: null }
+}
+
+const setFlightState = (promise) => {
+  if (typeof globalThis !== 'undefined') {
+    if (!globalThis[FLIGHT_KEY]) globalThis[FLIGHT_KEY] = { promise: null }
+    globalThis[FLIGHT_KEY].promise = promise
+  }
+}
 
 const useAuthStore = create(
   persist(
@@ -29,7 +48,7 @@ const useAuthStore = create(
         if (isProcessingLogout) return
         isProcessingLogout = true
         
-        applySessionInFlight = null
+        setFlightState(null)
         set({ user: null, token: null, refreshToken: null, isAuthenticated: false })
         
         // Reset flag after a tick
@@ -43,12 +62,14 @@ const useAuthStore = create(
           console.log('[authStore] No access token - skip (prevents loop)')
           return null
         }
-        if (applySessionInFlight) {
+
+        const flight = getFlightState()
+        if (flight.promise) {
           console.log('[authStore] Session in flight, return existing')
-          return applySessionInFlight
+          return flight.promise
         }
 
-        applySessionInFlight = (async () => {
+        const promise = (async () => {
           try {
             const { user: currentUser } = get()
             const sessionUser = session.user
@@ -86,11 +107,12 @@ const useAuthStore = create(
             console.error('[authStore] applySession error:', err)
             return null
           } finally {
-            applySessionInFlight = null
+            setFlightState(null)
           }
         })()
 
-        return applySessionInFlight
+        setFlightState(promise)
+        return promise
       },
     }),
     { 
