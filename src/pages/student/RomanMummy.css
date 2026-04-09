@@ -1,0 +1,109 @@
+.roman-mummy-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Baloo Da 2', cursive;
+  padding: 10px;
+}
+
+.playground-rm {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+.header-rm h1 { 
+  color: #5d4037; 
+  margin-bottom: 5px; 
+  font-weight: 800;
+  font-size: 26px;
+}
+.header-rm p { 
+  color: #795548; 
+  font-size: 16px; 
+  margin-top: 0; 
+}
+
+.game-area-rm {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.mummy-zone-rm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.character-rm { 
+  font-size: 90px; 
+  display: inline-block; 
+  user-select: none;
+}
+
+.dialogue-rm { 
+  background: #ffecb3; 
+  padding: 10px 15px; 
+  border-radius: 15px; 
+  font-weight: bold; 
+  color: #e65100;
+  margin-top: -10px;
+  position: relative;
+  border: 2px solid #ffca28;
+  font-size: 14px;
+}
+
+.chest-zone-rm {
+  width: 40%;
+}
+
+.chest-rm { 
+  font-size: 100px; 
+  display: inline-block; 
+  transform-origin: bottom center; 
+  user-select: none;
+}
+
+.controls-rm {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-rm {
+  background: #795548;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: bold;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 5px 15px rgba(121, 85, 72, 0.4);
+}
+
+.btn-rm:active { transform: scale(0.90); }
+.btn-rm:hover { background: #5d4037; }
+
+.btn-rm.outline-rm { 
+  background: transparent; 
+  color: #5d4037; 
+  box-shadow: none; 
+  border: 2px solid #5d4037; 
+  font-size: 18px;
+}
+
+.outline-rm-game {
+    display: block;
+    margin: 0 auto;
+}

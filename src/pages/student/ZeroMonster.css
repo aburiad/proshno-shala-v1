@@ -1,0 +1,91 @@
+.zero-monster-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Baloo Da 2', cursive;
+  padding: 10px;
+}
+
+.playground-zm {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.header-zm h1 { 
+  color: #d81b60; 
+  margin-bottom: 5px; 
+  font-weight: 800;
+  font-size: 28px;
+}
+.header-zm p { 
+  color: #555; 
+  font-size: 16px; 
+  margin-top: 0; 
+}
+
+.monster-zone-zm { margin: 30px 0; min-height: 120px; }
+.monster-zm { font-size: 80px; display: inline-block; user-select: none; }
+.dialogue-zm { 
+  background: #ffe082; 
+  padding: 5px 15px; 
+  border-radius: 20px; 
+  display: inline-block; 
+  font-weight: bold; 
+  color: #d35400;
+  margin-top: -10px;
+  font-size: 14px;
+}
+
+.number-zone-zm {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 80px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+.digit-zm {
+  display: inline-block;
+  background: #e3f2fd;
+  border-radius: 15px;
+  padding: 0 20px;
+  line-height: 1.2;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.zero-zm { color: #e74c3c; }
+
+.controls-zm {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-zm {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.3s;
+  box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+.btn-zm:active { transform: scale(0.95); }
+.btn-zm.outline-zm { 
+  background: transparent; 
+  color: #7f8c8d; 
+  box-shadow: none; 
+  border: 2px solid #bdc3c7; 
+}

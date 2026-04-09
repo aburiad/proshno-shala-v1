@@ -1,0 +1,149 @@
+.relation-game-container {
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(156, 39, 176, 0.15);
+  font-family: 'Baloo Da 2', cursive, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.rg-title {
+  color: #6a1b9a;
+  font-size: 24px;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
+}
+
+.rg-sub {
+  color: #8e24aa;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.match-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+  position: relative;
+}
+
+/* Optional connecting line container */
+.connections-layer {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.match-col {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+.match-col-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.col-left .match-col-title { color: #0288d1; }
+.col-right .match-col-title { color: #2e7d32; }
+
+.match-card {
+  background: white;
+  border: 3px solid #ccc;
+  border-radius: 12px;
+  padding: 16px 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 0 #ddd;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.match-card:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #ddd;
+}
+
+.match-card.left { 
+  border-color: #81d4fa; 
+  color: #01579b; 
+  box-shadow: 0 4px 0 #4fc3f7;
+}
+.match-card.right { 
+  border-color: #a5d6a7; 
+  color: #1b5e20; 
+  box-shadow: 0 4px 0 #81c784;
+}
+
+.match-card.selected {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+  border-width: 3px;
+  z-index: 5;
+}
+.match-card.left.selected { 
+  border-color: #0288d1; 
+  background: #e1f5fe; 
+}
+.match-card.right.selected { 
+  border-color: #2e7d32; 
+  background: #e8f5e9; 
+}
+
+.match-card.matched {
+  background: #fff9c4;
+  border-color: #fbc02d;
+  color: #f57f17;
+  box-shadow: 0 2px 0 #fbc02d;
+  pointer-events: none;
+  opacity: 0.9;
+  transform: scale(0.98);
+}
+
+.win-message {
+  padding: 20px;
+  background: #66bb6a;
+  color: white;
+  border-radius: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 30px;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.rg-btn {
+  margin-top: 25px;
+  background: #ab47bc;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #8e24aa;
+  transition: all 0.2s;
+}
+.rg-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #8e24aa;
+}
+
+@media (max-width: 500px) {
+  .match-card {
+    font-size: 15px;
+    padding: 12px 6px;
+    min-height: 50px;
+  }
+}
