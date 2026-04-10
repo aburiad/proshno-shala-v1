@@ -92,7 +92,9 @@ const useAuthStore = create(
             console.log('[authStore] Auth state set, fetching backend profile')
 
             try {
-              const res = await api.get('/auth/me')
+              const res = await api.get('/auth/me', {
+                headers: { Authorization: `Bearer ${session.access_token}` }
+              })
               const backendUser = res.data?.user
               if (backendUser) {
                 console.log('[authStore] Backend profile fetched')
