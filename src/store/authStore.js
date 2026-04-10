@@ -92,6 +92,7 @@ const useAuthStore = create(
             console.log('[authStore] Auth state set, fetching backend profile')
 
             try {
+              console.log('[authStore] Sending token:', session.access_token?.substring(0, 20) + '...')
               const res = await api.get('/auth/me', {
                 headers: { Authorization: `Bearer ${session.access_token}` }
               })
